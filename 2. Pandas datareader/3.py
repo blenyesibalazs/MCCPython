@@ -8,7 +8,7 @@ portfolio = np.empty([len(tickers)], dtype=object) #initializing a blank array o
 
 i=0
 
- for ticker in tickers: 
+for ticker in tickers: 
      portfolio[i] = pdr.get_data_yahoo(ticker, start='2022-04-01', end='2022-04-22')
      output=pd.DataFrame.from_dict(portfolio[i]) #converting an object to a dataframe so that it can be written to an CSV file
      output.to_csv("C:\\Users\\...\\Python\\"+ticker+"sample2.csv")
