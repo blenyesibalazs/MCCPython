@@ -3,6 +3,7 @@ import pandas as pd
 import datetime as dt
 
 def scrapeSNP500():
+        #scrape wikipedia for information about snp 500 companies
         table=pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
         df = table[0]
         df.to_csv('/Users/blenyesibalazs/DevProjects/MCCPython/6. AlgoTrading/SnP500/S&P500-Info.csv')
@@ -33,11 +34,11 @@ def login(username, password):
                 "language_code": "En" }}
         #JSON requests
         #login
-        login = requests.post(url='https://mws8.infrontservices.com:8089', json=LoginParams).json()
+        login = requests.post(url='https://', json=LoginParams).json()
         session_token = login['session_token']
         return session_token
 
-session_token=login("balazs.blenyesi","Infront2021!")
+session_token=login("","")
 
 def getHistoryRequest(session_token, feed, ticker, start_date, end_date):
         request_ID = '2'
@@ -55,7 +56,7 @@ def getHistoryRequest(session_token, feed, ticker, start_date, end_date):
                 }
         }
 
-        getHistory = requests.post(url='https://mws8.infrontservices.com:8089', json=getHistoryRequestParams).json()
+        getHistory = requests.post(url='https://', json=getHistoryRequestParams).json()
 
         date = getHistory['md_get_history_response']['trades'][0]['date']
         closing_price = getHistory['md_get_history_response']['trades'][0]['last']
@@ -68,18 +69,21 @@ def getHistoryRequest(session_token, feed, ticker, start_date, end_date):
 #all tickers
 tickerss=scrapeSNP500()
 
-#then separating out the tickers into the likely venue of listing
+#then separate out the tickers into the likely venue of listing
 NYSETickers = []
 NASDAQTickers = []
 
+#split the data into two files depending on the length
 NYSETickers = tickerss[tickerss['Symbol'].apply(lambda x: len(str(x)) == 3)]
 NASDAQTickers = tickerss[tickerss['Symbol'].apply(lambda x: len(str(x)) == 4)]
 
+#convert everything to a list
 NASDAQSymbol_list = NASDAQTickers["Symbol"].tolist()
 NYSESymbol_list = NYSETickers["Symbol"].tolist()
 
 OutputData = []
 
+#try and fetch information
 for ticker in NASDAQSymbol_list:
         print("Ticker is:",ticker)
         try:
