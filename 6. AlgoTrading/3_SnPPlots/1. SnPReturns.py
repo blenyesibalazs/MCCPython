@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+#fetch the snp500 data from the federal reserve database
 start_date = pd.Timestamp('2014-01-01')
 end_date = pd.Timestamp.today()
 snp500 = web.DataReader('SP500', 'fred', start_date, end_date)
