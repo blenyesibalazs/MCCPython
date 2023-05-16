@@ -1,1 +1,6 @@
-These are the homework instructions
+Please choose one of the options below.
+
+1. Build an equal-weight portfolio out of 3 stocks, calculate stop levels using the minimum gap between price action to the 50-day moving average as the significant technical level, based on the last 6 month’s data. Calculate value at risk per position, value at risk for the portfolio. What leverage (optimal) can you take on a portfolio of 100k USD? 
+2. You have 3 stocks at your disposal and their data for the last 10 years. Calculate the beta of the portfolio and the stocks based on the first 5 years worth of data. Optimise the position weighs to fit a conservative risk profile. Then optimise the portfolio holding weighs for an aggressive risk profile. What annual return would each earn for the remaining 5 years of your data? 
+3. You have 3 stocks at your disposal and their daily data for the last 10 years. Build an equal weight long-only portfolio. Calculate the Sharpe and Treynor ratios of your portfolio. Calculate the individual mean returns, standard deviation of said returns and determine the optimal allocation of funds (100k USD) between the positions while maintaining a reasonably low sensitivity to market volatility (beta). What’s reasonable is up to you
+4. Build a portfolio out of 30 stocks, based on 4 segments included in the SnP, by size of market capitalization. Allocate 1,000,000 USD to that portfolio, equal weight, within each sector. The sector weighs should mirror the Snp500 logic.
