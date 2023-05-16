@@ -16,11 +16,13 @@ def filter_df_by_time_range(df, start_time, end_time):
 
 df = pd.read_csv('/Users/blenyesibalazs/DevProjects/MCCPython/6. AlgoTrading/Data/AAPLoutput_2003_2023.csv')
 
+#resample data from daily to monthly resolution
 stock_10 = filter_df_by_time_range(df,'2013-01-01', '2023-01-01').resample('M').mean()
 stock_5 = filter_df_by_time_range(df,'2018-01-01', '2023-01-01').resample('M').mean()
 stock_2 = filter_df_by_time_range(df,'2021-01-01', '2023-01-01').resample('M').mean()
 stock_1 = filter_df_by_time_range(df,'2022-01-01', '2023-01-01').resample('M').mean()
 
+#calculate daily returns
 monthly_returns_10 = stock_10["last"].pct_change()
 monthly_returns_5 = stock_5["last"].pct_change()
 monthly_returns_2 = stock_2["last"].pct_change()
