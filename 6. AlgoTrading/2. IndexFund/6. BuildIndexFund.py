@@ -10,10 +10,12 @@ constituents_df = pd.read_csv('/Users/blenyesibalazs/DevProjects/MCCPython/6. Al
 portfolio_size = float(10000000)
 position_size = portfolio_size/len(constituents_df.index)
 
+#calculate allocated funds to each position
 total_volume = constituents_df['Volume'].sum()
 constituents_df['Proportion of Portfolio'] = constituents_df['Volume'] / total_volume
 constituents_df['Allocation'] = constituents_df['Proportion of Portfolio'] * portfolio_size
 
+#calculate the number of shares
 for i in range(0, len(constituents_df.index)):
     constituents_df.loc[i, 'Number of Shares to buy'] = math.floor(constituents_df.loc[i, 'Allocation'] / constituents_df.loc[i, 'LastPrice'])
     #this is just to provide a checkpoint
